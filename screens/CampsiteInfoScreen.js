@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View, Button, Modal } from 'react-native';
-import { Rating, Input } from 'react-native-elements';
+import { Rating, Input,Divider } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
 import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from '../features/favorites/favoritesSlice';

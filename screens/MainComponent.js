@@ -20,6 +20,7 @@ import { fetchCampsites } from "../features/campsites/campsitesSlice";
 import { fetchComments } from "../features/comments/commentsSlice";
 import { fetchPromotions } from "../features/promotions/promotionsSlice";
 import FavoritesScreen from "./FavoritesScreen";
+import LoginScreen from "./LoginScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -181,6 +182,29 @@ const FavoritesNavigator = () => {
     );
 };
 
+const LoginNavigator = () => {
+    const Stack = createStackNavigator();
+    
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen 
+                name= 'Login'
+                component={LoginScreen}
+                options= {({navigation}) => ({ 
+                    headerLeft: () => (
+                        <Icon 
+                            name='sign-in'
+                            type='font-awesome'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
+            />
+        </Stack.Navigator>
+    );
+};
+
 
 const CustomDrawerContent = (props) => (
     <DrawerContentScrollView {...props}>
@@ -218,6 +242,21 @@ const Main = () => {
                 drawerContent={CustomDrawerContent}
                 drawerStyle={{ backgroundColor: '#CEC8FF' }}
             >
+                <Drawer.Screen 
+                   name='Login'
+                   component={LoginNavigator}
+                   options={{ 
+                      drawerIcon: ({ color }) => (
+                           <Icon
+                              name='sign-in'
+                              type='font-awesome'
+                              size={24}
+                              iconStyle={{ width: 24 }}
+                              color={color}
+                           />
+                        )
+                    }}
+                />
                 <Drawer.Screen 
                    name='Home'
                    component={HomeNavigator}
